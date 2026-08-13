@@ -1,14 +1,7 @@
 import { Reveal } from "@/components/reveal";
 import { skills } from "@/data";
-import { cn } from "@/lib/utils";
 import { getSkillIcon } from "@/lib/skill-icons";
 import { getCategoryIcon } from "@/lib/skill-category-icons";
-
-const spanClasses: Record<string, string> = {
-  lg: "md:col-span-2 lg:row-span-2",
-  md: "md:col-span-2",
-  sm: "md:col-span-1",
-};
 
 export function Skills() {
   return (
@@ -24,15 +17,11 @@ export function Skills() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[minmax(160px,auto)]">
+        <div className="mt-10 grid grid-cols-1 items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {skills.map((group, i) => {
             const CategoryIcon = getCategoryIcon(group.category);
             return (
-              <Reveal
-                key={group.category}
-                delay={i * 0.05}
-                className={cn(spanClasses[group.size ?? "sm"])}
-              >
+              <Reveal key={group.category} delay={i * 0.05}>
                 <div className="group/card glass relative flex h-full flex-col overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-primary/10 sm:p-6">
                   <div
                     className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-primary/10 blur-2xl transition-opacity duration-300 group-hover/card:opacity-100 opacity-0"
@@ -55,7 +44,7 @@ export function Skills() {
                     </h3>
                   </div>
 
-                  <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2">
+                  <div className="mt-5 grid grid-cols-2 gap-2">
                     {group.skills.map((skill) => {
                       const { Icon, color } = getSkillIcon(skill);
                       return (

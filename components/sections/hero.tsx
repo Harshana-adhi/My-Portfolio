@@ -1,39 +1,27 @@
 "use client";
 
 import * as React from "react";
-import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data";
 
-const HeroScene = dynamic(() => import("./hero-scene"), {
-  ssr: false,
-  loading: () => null,
-});
-
-function useIsSmallScreen() {
-  const [isSmall, setIsSmall] = React.useState(false);
-  React.useEffect(() => {
-    const mq = window.matchMedia("(max-width: 767px)");
-    setIsSmall(mq.matches);
-    const onChange = (e: MediaQueryListEvent) => setIsSmall(e.matches);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
-  return isSmall;
-}
-
 export function Hero() {
-  const isSmallScreen = useIsSmallScreen();
   const reduceMotion = useReducedMotion();
-  const showCanvas = !isSmallScreen && !reduceMotion;
+  const { scrollY } = useScroll();
+
+  const photoOpacity = useTransform(scrollY, [0, 350], [1, 0]);
+  const photoY = useTransform(scrollY, [0, 350], [0, -60]);
+  const photoScale = useTransform(scrollY, [0, 350], [1, 0.85]);
+  const ringRotate = useTransform(scrollY, [0, 350], [0, 45]);
+  const ringRotateReverse = useTransform(scrollY, [0, 350], [0, -30]);
 
   return (
     <section
       id="top"
-      className="relative flex min-h-[92vh] items-center overflow-hidden px-4 sm:px-6 lg:px-8"
+      className="relative flex min-h-[92vh] items-center overflow-hidden px-4 pb-20 sm:px-6 lg:px-8"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 gradient-mesh animate-gradient bg-[length:200%_200%] opacity-70" />
 
@@ -42,18 +30,17 @@ export function Hero() {
           initial={reduceMotion ? false : { opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
+          className="order-2 md:order-1"
         >
-          <span className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
-            Hi, I&apos;m{" "}
-            <span className="font-semibold text-foreground">{profile.name}</span>
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
+            {profile.role}
           </span>
 
           <h1
-            className="text-balance font-display font-semibold lowercase leading-[0.88] tracking-tight"
-            style={{ fontSize: "clamp(3.25rem, 8vw + 1rem, 7.5rem)" }}
+            className="text-balance font-display font-semibold leading-[0.95] tracking-tight"
+            style={{ fontSize: "clamp(2.75rem, 6vw + 1rem, 5.5rem)" }}
           >
-            <span className="block">software</span>
-            <span className="block text-primary">developer</span>
+            Hi, I&apos;m {profile.name}
           </h1>
 
           <p
@@ -73,30 +60,55 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <div className="relative h-[320px] sm:h-[420px] md:h-[520px]">
-          {showCanvas ? (
-            <React.Suspense fallback={<GradientFallback />}>
-              <HeroScene />
-            </React.Suspense>
-          ) : (
-            <GradientFallback />
-          )}
-        </div>
+        <motion.div
+          className="relative order-1 mx-auto mt-6 h-[280px] w-[280px] sm:mt-8 sm:h-[360px] sm:w-[360px] md:order-2 md:mt-10 md:h-[440px] md:w-[440px]"
+          style={
+            reduceMotion
+              ? undefined
+              : { opacity: photoOpacity, y: photoY, scale: photoScale }
+          }
+        >
+          <div className="absolute inset-0 rounded-full bg-primary/20 blur-3xl" />
+
+          <motion.div
+            className="absolute inset-0 rounded-full border-2 border-dashed border-primary/50"
+            style={reduceMotion ? undefined : { rotate: ringRotate }}
+            aria-hidden
+          />
+          <motion.div
+            className="absolute inset-3 rounded-full border border-secondary/40 sm:inset-4"
+            style={reduceMotion ? undefined : { rotate: ringRotateReverse }}
+            aria-hidden
+          />
+
+          <div className="absolute inset-6 rounded-full bg-gradient-to-br from-primary via-secondary to-primary p-[3px] shadow-xl shadow-primary/20 sm:inset-8">
+            <div className="h-full w-full overflow-hidden rounded-full bg-background">
+              <Image
+                src="/images/harshana-2.webp"
+                alt={profile.name}
+                fill
+                priority
+                sizes="(max-width: 768px) 280px, 440px"
+                className="relative object-cover object-center"
+              />
+            </div>
+          </div>
+        </motion.div>
       </div>
 
-      <Link
-        href="#about"
-        aria-label="Scroll to About section"
-        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 rounded-full border border-border p-2.5 text-muted-foreground transition-colors hover:text-foreground sm:flex"
+      <motion.div
+        className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 sm:flex"
+        animate={reduceMotion ? undefined : { y: [0, 8, 0] }}
+        transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
       >
-        <ArrowDown className="size-4" />
-      </Link>
+        <Link
+          href="#about"
+          aria-label="Scroll to About section"
+          className="flex size-11 items-center justify-center rounded-full border border-primary/40 bg-card/80 text-primary shadow-lg shadow-primary/20 backdrop-blur-sm transition-colors hover:bg-primary hover:text-primary-foreground"
+        >
+          <ArrowDown className="size-5" />
+        </Link>
+      </motion.div>
     </section>
-  );
-}
-
-function GradientFallback() {
-  return (
-    <div className="absolute inset-0 rounded-3xl bg-[conic-gradient(from_180deg_at_50%_50%,#d0ff71_0deg,#0bde66_180deg,#d0ff71_360deg)] opacity-60 blur-2xl" />
   );
 }

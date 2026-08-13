@@ -1,20 +1,24 @@
 import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/ui/badge";
-import { profile, projects, certifications, skills } from "@/data";
+import { AboutBlob } from "@/components/sections/about-blob";
+import { profile, projects, experience, skills } from "@/data";
 
 const stats = [
   { value: projects.length, label: "Projects Built" },
   { value: skills.length, label: "Skill Categories" },
-  { value: certifications.length, label: "Certifications" },
+  { value: experience.length, label: "Experience Entries" },
 ];
 
 export function About() {
   return (
-    <section id="about" className="mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
+    <section id="about" className="relative mx-auto max-w-6xl px-4 py-24 sm:px-6 lg:px-8">
       <Reveal>
         <h2 className="font-display text-4xl font-semibold tracking-tight lowercase sm:text-5xl">
           About Me
         </h2>
+        <span className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary/15 px-3 py-1 text-sm font-semibold text-primary">
+          Full-Stack Developer
+        </span>
       </Reveal>
 
       <div className="mt-10 grid grid-cols-1 gap-10 md:grid-cols-3">
@@ -63,6 +67,8 @@ export function About() {
               ))}
             </div>
           </div>
+
+          <AboutBlob />
         </Reveal>
       </div>
     </section>

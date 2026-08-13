@@ -7,4 +7,10 @@ export const education: EducationEntry[] = [
     period: "Department of Industrial Management, Faculty of Science · Expected graduation 2029",
     achievements: [],
   },
+  {
+    institution: "Ibbagamuwa Central College",
+    degree: "GCE Ordinary Level and GCE Advanced Level",
+    period: "",
+    achievements: [],
+  },
 ];

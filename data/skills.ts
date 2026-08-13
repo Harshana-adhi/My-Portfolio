@@ -4,32 +4,26 @@ export const skills: SkillCategory[] = [
   {
     category: "Programming Languages",
     skills: ["Java", "Kotlin", "JavaScript", "Python", "SQL", "C++"],
-    size: "lg",
   },
   {
     category: "Web Development",
     skills: ["React.js", "Next.js", "Node.js", "Express.js", "HTML", "CSS"],
-    size: "md",
   },
   {
     category: "Mobile Development",
     skills: ["Android Development", "Kotlin", "Android Studio", "XML"],
-    size: "sm",
   },
   {
     category: "AI / ML",
     skills: ["Artificial Intelligence", "Machine Learning", "Python for AI/ML", "Data Analysis"],
-    size: "md",
   },
   {
     category: "Databases",
     skills: ["PostgreSQL", "MySQL", "MongoDB", "Supabase"],
-    size: "sm",
   },
   {
     category: "Tools & Technologies",
     skills: ["Git", "GitHub", "VS Code", "Android Studio", "Postman", "REST APIs"],
-    size: "md",
   },
   {
     category: "Other Technical Skills",
@@ -40,7 +34,6 @@ export const skills: SkillCategory[] = [
       "Software Engineering",
       "System Modeling",
     ],
-    size: "sm",
   },
   {
     category: "Soft Skills",
@@ -53,6 +46,5 @@ export const skills: SkillCategory[] = [
       "Time Management",
       "Adaptability",
     ],
-    size: "lg",
   },
 ];

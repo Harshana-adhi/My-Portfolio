@@ -23,7 +23,9 @@ export function Education() {
                 <div>
                   <h3 className="font-display font-semibold">{edu.institution}</h3>
                   <p className="text-sm text-muted-foreground">{edu.degree}</p>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{edu.period}</p>
+                  {edu.period && (
+                    <p className="mt-0.5 text-xs text-muted-foreground">{edu.period}</p>
+                  )}
                 </div>
               </div>
 

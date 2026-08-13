@@ -20,7 +20,6 @@ All placeholder content lives in typed files under [`data/`](data) — edit thes
 - [`data/projects.ts`](data/projects.ts) — project cards: title, description, tech, image, GitHub/live links, your individual contribution
 - [`data/education.ts`](data/education.ts) — institutions, degrees, achievements, coursework
 - [`data/experience.ts`](data/experience.ts) — internships, freelance, volunteer, leadership entries (rendered as a timeline)
-- [`data/certifications.ts`](data/certifications.ts) — certifications, hackathons, awards, workshops
 
 Every placeholder is wrapped in `[brackets]` so it's easy to find and replace with `Ctrl+F` / project-wide search.
 

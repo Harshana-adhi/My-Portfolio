@@ -21,7 +21,6 @@ export interface Profile {
 export interface SkillCategory {
   category: string;
   skills: string[];
-  size?: "sm" | "md" | "lg";
 }
 
 export interface Project {
@@ -49,12 +48,4 @@ export interface ExperienceEntry {
   period: string;
   type: "internship" | "freelance" | "volunteer" | "leadership";
   description: string[];
-}
-
-export interface Certification {
-  title: string;
-  issuer: string;
-  date: string;
-  type: "certification" | "hackathon" | "award" | "workshop" | "competition";
-  url?: string;
 }
