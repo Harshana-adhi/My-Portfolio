@@ -4,7 +4,7 @@ import * as React from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
-import { ArrowDown, Sparkles } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data";
 
@@ -35,7 +35,7 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[92vh] items-center overflow-hidden px-4 sm:px-6 lg:px-8"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 gradient-mesh animate-gradient bg-[length:200%_200%] opacity-60" />
+      <div className="pointer-events-none absolute inset-0 -z-10 gradient-mesh animate-gradient bg-[length:200%_200%] opacity-70" />
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2">
         <motion.div
@@ -43,20 +43,22 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <span className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
-            <Sparkles className="size-3.5" /> {profile.role}
+          <span className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground">
+            Hi, I&apos;m{" "}
+            <span className="font-semibold text-foreground">{profile.name}</span>
           </span>
 
           <h1
-            className="text-balance font-display font-bold leading-[1.05] tracking-tight"
-            style={{ fontSize: "clamp(2.5rem, 5vw + 1rem, 4.5rem)" }}
+            className="text-balance font-display font-semibold lowercase leading-[0.88] tracking-tight"
+            style={{ fontSize: "clamp(3.25rem, 8vw + 1rem, 7.5rem)" }}
           >
-            {profile.name}
+            <span className="block">software</span>
+            <span className="block text-primary">developer</span>
           </h1>
 
           <p
-            className="mt-5 max-w-xl text-pretty text-muted-foreground"
-            style={{ fontSize: "clamp(1rem, 0.6vw + 0.9rem, 1.25rem)" }}
+            className="mt-6 max-w-xl text-pretty text-muted-foreground"
+            style={{ fontSize: "clamp(1rem, 0.6vw + 0.9rem, 1.15rem)" }}
           >
             {profile.tagline}
           </p>
@@ -95,6 +97,6 @@ export function Hero() {
 
 function GradientFallback() {
   return (
-    <div className="absolute inset-0 rounded-3xl bg-[conic-gradient(from_180deg_at_50%_50%,#8b5cf6_0deg,#22d3ee_180deg,#8b5cf6_360deg)] opacity-70 blur-2xl" />
+    <div className="absolute inset-0 rounded-3xl bg-[conic-gradient(from_180deg_at_50%_50%,#d0ff71_0deg,#0bde66_180deg,#d0ff71_360deg)] opacity-60 blur-2xl" />
   );
 }

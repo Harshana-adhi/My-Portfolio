@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Antonio, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
 import { profile } from "@/data";
 
-const display = Space_Grotesk({
+const display = Antonio({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["500", "600", "700"],

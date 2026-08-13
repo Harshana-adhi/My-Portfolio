@@ -18,6 +18,13 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
+const initials = profile.name
+  .split(" ")
+  .map((part) => part[0])
+  .join("")
+  .slice(0, 2)
+  .toUpperCase();
+
 export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -37,21 +44,34 @@ export function Navbar() {
     >
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8"
+        className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8"
       >
-        <Link
-          href="#top"
-          className="whitespace-nowrap font-display text-lg font-bold tracking-tight"
-        >
-          {profile.name}
-        </Link>
+        <div className="flex min-w-0 items-center gap-3">
+          <Link
+            href="#top"
+            aria-label="Go to top"
+            className="flex size-9 shrink-0 items-center justify-center rounded-full bg-primary font-display text-sm font-semibold text-primary-foreground"
+          >
+            {initials}
+          </Link>
+          <Link
+            href="#contact"
+            className="hidden items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
+          >
+            <span className="relative flex size-2">
+              <span className="absolute inline-flex size-full animate-pulse-dot rounded-full bg-secondary" />
+              <span className="relative inline-flex size-2 rounded-full bg-secondary" />
+            </span>
+            Available for work
+          </Link>
+        </div>
 
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted"
+                className="whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted"
               >
                 {link.label}
               </Link>
@@ -59,14 +79,14 @@ export function Navbar() {
           ))}
         </ul>
 
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2">
           <ThemeToggle />
           <Button asChild size="sm">
             <Link href="#contact">Get in touch</Link>
           </Button>
         </div>
 
-        <div className="flex md:hidden items-center gap-1">
+        <div className="flex lg:hidden items-center gap-1">
           <ThemeToggle />
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>

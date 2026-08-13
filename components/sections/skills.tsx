@@ -1,10 +1,11 @@
 import { Reveal } from "@/components/reveal";
-import { Badge } from "@/components/ui/badge";
 import { skills } from "@/data";
 import { cn } from "@/lib/utils";
+import { getSkillIcon } from "@/lib/skill-icons";
+import { getCategoryIcon } from "@/lib/skill-category-icons";
 
 const spanClasses: Record<string, string> = {
-  lg: "md:col-span-2 md:row-span-2",
+  lg: "md:col-span-2 lg:row-span-2",
   md: "md:col-span-2",
   sm: "md:col-span-1",
 };
@@ -15,7 +16,7 @@ export function Skills() {
       <div className="pointer-events-none absolute inset-0 -z-10 gradient-mesh opacity-20" />
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-display text-4xl font-semibold tracking-tight lowercase sm:text-5xl">
             Skills
           </h2>
           <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -23,27 +24,58 @@ export function Skills() {
           </p>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:auto-rows-[minmax(140px,auto)]">
-          {skills.map((group, i) => (
-            <Reveal
-              key={group.category}
-              delay={i * 0.05}
-              className={cn(spanClasses[group.size ?? "sm"])}
-            >
-              <div className="glass flex h-full flex-col rounded-2xl p-6 transition-transform hover:-translate-y-1">
-                <h3 className="font-display text-sm font-semibold text-muted-foreground">
-                  {group.category}
-                </h3>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {group.skills.map((skill) => (
-                    <Badge key={skill} variant="secondary">
-                      {skill}
-                    </Badge>
-                  ))}
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:auto-rows-[minmax(160px,auto)]">
+          {skills.map((group, i) => {
+            const CategoryIcon = getCategoryIcon(group.category);
+            return (
+              <Reveal
+                key={group.category}
+                delay={i * 0.05}
+                className={cn(spanClasses[group.size ?? "sm"])}
+              >
+                <div className="group/card glass relative flex h-full flex-col overflow-hidden rounded-2xl p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-primary/10 sm:p-6">
+                  <div
+                    className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-primary/10 blur-2xl transition-opacity duration-300 group-hover/card:opacity-100 opacity-0"
+                    aria-hidden
+                  />
+                  <span
+                    className="pointer-events-none absolute right-3 top-1 select-none font-display text-5xl font-semibold text-foreground/[0.06] sm:text-6xl"
+                    aria-hidden
+                  >
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
+                      <CategoryIcon className="size-4.5" />
+                    </span>
+                    <h3 className="font-display text-base font-semibold tracking-tight sm:text-lg">
+                      <span className="text-primary">{String(i + 1).padStart(2, "0")}.</span>{" "}
+                      {group.category}
+                    </h3>
+                  </div>
+
+                  <div className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-2">
+                    {group.skills.map((skill) => {
+                      const { Icon, color } = getSkillIcon(skill);
+                      return (
+                        <div
+                          key={skill}
+                          className="group/chip flex items-center gap-2 rounded-lg border border-border bg-background/40 px-2.5 py-2 text-xs font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-background/70 sm:text-sm"
+                        >
+                          <Icon
+                            className="size-4 shrink-0 transition-transform duration-200 group-hover/chip:scale-110"
+                            style={{ color }}
+                          />
+                          <span className="truncate">{skill}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            </Reveal>
-          ))}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

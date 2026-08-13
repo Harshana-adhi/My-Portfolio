@@ -20,12 +20,12 @@ function HeroBlob() {
       <mesh ref={meshRef}>
         <icosahedronGeometry args={[1.6, 12]} />
         <MeshDistortMaterial
-          color="#8b5cf6"
+          color="#d0ff71"
           attach="material"
           distort={0.45}
           speed={2}
           roughness={0.15}
-          metalness={0.4}
+          metalness={0.35}
         />
       </mesh>
     </Float>
@@ -40,8 +40,8 @@ export default function HeroScene() {
       gl={{ antialias: true, alpha: true }}
     >
       <ambientLight intensity={0.6} />
-      <directionalLight position={[3, 3, 3]} intensity={1.4} color="#22d3ee" />
-      <pointLight position={[-3, -2, -2]} intensity={0.8} color="#8b5cf6" />
+      <directionalLight position={[3, 3, 3]} intensity={1.4} color="#0bde66" />
+      <pointLight position={[-3, -2, -2]} intensity={0.8} color="#d0ff71" />
       <HeroBlob />
       <Environment preset="city" />
     </Canvas>

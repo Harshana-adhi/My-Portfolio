@@ -53,7 +53,7 @@ export function Contact() {
       <div className="pointer-events-none absolute inset-0 -z-10 gradient-mesh opacity-25" />
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
         <Reveal>
-          <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">
+          <h2 className="font-display text-4xl font-semibold tracking-tight lowercase sm:text-5xl">
             Let&apos;s talk
           </h2>
           <p className="mt-3 max-w-md text-muted-foreground">
