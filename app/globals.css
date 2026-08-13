@@ -1,26 +1,175 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --radius: 0.75rem;
+
+  --background: oklch(0.99 0.002 260);
+  --foreground: oklch(0.145 0.01 260);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0.01 260);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0.01 260);
+
+  --primary: oklch(0.62 0.21 295);
+  --primary-foreground: oklch(0.98 0.01 295);
+
+  --secondary: oklch(0.7 0.18 190);
+  --secondary-foreground: oklch(0.14 0.02 190);
+
+  --muted: oklch(0.96 0.005 260);
+  --muted-foreground: oklch(0.45 0.02 260);
+
+  --accent: oklch(0.7 0.18 190);
+  --accent-foreground: oklch(0.14 0.02 190);
+
+  --destructive: oklch(0.58 0.24 27);
+  --border: oklch(0.9 0.005 260);
+  --input: oklch(0.9 0.005 260);
+  --ring: oklch(0.62 0.21 295);
+}
+
+.dark {
+  --background: oklch(0.13 0.02 275);
+  --foreground: oklch(0.96 0.01 260);
+
+  --card: oklch(0.17 0.02 275);
+  --card-foreground: oklch(0.96 0.01 260);
+
+  --popover: oklch(0.15 0.02 275);
+  --popover-foreground: oklch(0.96 0.01 260);
+
+  --primary: oklch(0.72 0.19 295);
+  --primary-foreground: oklch(0.14 0.02 295);
+
+  --secondary: oklch(0.75 0.17 190);
+  --secondary-foreground: oklch(0.14 0.02 190);
+
+  --muted: oklch(0.22 0.02 275);
+  --muted-foreground: oklch(0.68 0.02 260);
+
+  --accent: oklch(0.75 0.17 190);
+  --accent-foreground: oklch(0.14 0.02 190);
+
+  --destructive: oklch(0.65 0.22 27);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.72 0.19 295);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --animate-fade-up: fade-up 0.6s ease-out forwards;
+  --animate-gradient: gradient-shift 8s ease infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .glass {
+    background: color-mix(in oklch, var(--card) 55%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+  }
+  .gradient-mesh {
+    background-image: radial-gradient(
+        at 20% 20%,
+        color-mix(in oklch, var(--primary) 35%, transparent) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 80% 0%,
+        color-mix(in oklch, var(--secondary) 30%, transparent) 0px,
+        transparent 50%
+      ),
+      radial-gradient(
+        at 50% 100%,
+        color-mix(in oklch, var(--primary) 25%, transparent) 0px,
+        transparent 50%
+      );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

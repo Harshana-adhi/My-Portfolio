@@ -1,0 +1,2 @@
+Drop your real resume PDF here as "resume.pdf" (public/resume.pdf).
+The "Download CV" button links to /resume.pdf and expects this exact filename.
