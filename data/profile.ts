@@ -2,9 +2,9 @@ import { Profile } from "./types";
 
 export const profile: Profile = {
   name: "Harshana Praveen",
-  role: "Industrial Management Undergraduate | Software Developer | AI/ML Enthusiast",
+  role: "MIT Undergraduate | Software Developer | AI/ML Enthusiast",
   tagline:
-    "I am an Industrial Management undergraduate at the University of Kelaniya with a passion for software development, artificial intelligence, machine learning, and emerging technologies. I enjoy transforming ideas into practical technology solutions while continuously developing my technical and problem-solving skills.",
+    "I am an MIT undergraduate at the University of Kelaniya with a passion for software development, artificial intelligence, machine learning, and emerging technologies. I enjoy transforming ideas into practical technology solutions while continuously developing my technical and problem-solving skills.",
   location: "Sri Lanka",
   bio: [
     "I am an undergraduate at the Department of Industrial Management, University of Kelaniya, with a strong interest in the intersection of technology, business, and innovation.",

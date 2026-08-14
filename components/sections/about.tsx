@@ -51,9 +51,13 @@ export function About() {
         <Reveal delay={0.1} className="space-y-6">
           <div>
             <h3 className="font-display text-sm font-semibold">Interests</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 grid grid-cols-2 gap-2">
               {profile.interests.map((interest) => (
-                <Badge key={interest} variant="outline">
+                <Badge
+                  key={interest}
+                  variant="outline"
+                  className="w-full justify-center py-1.5 text-center"
+                >
                   {interest}
                 </Badge>
               ))}
@@ -61,9 +65,11 @@ export function About() {
           </div>
           <div>
             <h3 className="font-display text-sm font-semibold">Technical Interests</h3>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 grid grid-cols-2 gap-2">
               {profile.technicalInterests.map((interest) => (
-                <Badge key={interest}>{interest}</Badge>
+                <Badge key={interest} className="w-full justify-center py-1.5 text-center">
+                  {interest}
+                </Badge>
               ))}
             </div>
           </div>

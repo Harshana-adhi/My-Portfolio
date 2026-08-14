@@ -16,7 +16,7 @@ export default function Home() {
       <Separator className="mx-auto max-w-6xl" />
       <Skills />
       <Projects />
-      <Separator className="mx-auto max-w-6xl" />
+      <Separator className="mx-auto mt-10 max-w-6xl" />
       <Education />
       <Experience />
       <Separator className="mx-auto max-w-6xl" />

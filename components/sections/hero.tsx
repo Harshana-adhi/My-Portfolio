@@ -15,7 +15,6 @@ export function Hero() {
   const photoOpacity = useTransform(scrollY, [0, 350], [1, 0]);
   const photoY = useTransform(scrollY, [0, 350], [0, -60]);
   const photoScale = useTransform(scrollY, [0, 350], [1, 0.85]);
-  const ringRotate = useTransform(scrollY, [0, 350], [0, 45]);
   const ringRotateReverse = useTransform(scrollY, [0, 350], [0, -30]);
 
   return (
@@ -72,7 +71,10 @@ export function Hero() {
 
           <motion.div
             className="absolute inset-0 rounded-full border-2 border-dashed border-primary/50"
-            style={reduceMotion ? undefined : { rotate: ringRotate }}
+            animate={reduceMotion ? undefined : { rotate: 360 }}
+            transition={
+              reduceMotion ? undefined : { duration: 40, repeat: Infinity, ease: "linear" }
+            }
             aria-hidden
           />
           <motion.div

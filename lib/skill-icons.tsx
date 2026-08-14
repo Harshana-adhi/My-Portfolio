@@ -19,6 +19,11 @@ import {
   SiGithub,
   SiPostman,
   SiOpenjdk,
+  SiTypescript,
+  SiTailwindcss,
+  SiJsonwebtokens,
+  SiZod,
+  SiRender,
 } from "react-icons/si";
 import {
   Database,
@@ -40,6 +45,14 @@ import {
   Clock,
   Shuffle,
   Sparkles,
+  Radio,
+  Zap,
+  ScanText,
+  FileText,
+  Upload,
+  AppWindow,
+  Layers,
+  Terminal,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -84,6 +97,20 @@ export const skillIconMap: Record<string, SkillIcon> = {
   "VS Code": { Icon: Code2, color: "#007ACC" },
   Postman: { Icon: SiPostman, color: "#FF6C37" },
   "REST APIs": { Icon: Webhook, color: "#10b981" },
+
+  TypeScript: { Icon: SiTypescript, color: "#3178C6" },
+  "Tailwind CSS": { Icon: SiTailwindcss, color: "#06B6D4" },
+  JWT: { Icon: SiJsonwebtokens, color: "#ffffff" },
+  WebSockets: { Icon: Radio, color: "#22d3ee" },
+  Zod: { Icon: SiZod, color: "#3E67B1" },
+  Groq: { Icon: Zap, color: "#f59e0b" },
+  "OCR (Tesseract.js)": { Icon: ScanText, color: "#94a3b8" },
+  "PDF Parsing": { Icon: FileText, color: "#ef4444" },
+  "React Dropzone": { Icon: Upload, color: "#38bdf8" },
+  Render: { Icon: SiRender, color: "#46E3B7" },
+  "Java Swing": { Icon: AppWindow, color: "#ED8B00" },
+  "DAO Pattern": { Icon: Layers, color: "#818cf8" },
+  "Console Development": { Icon: Terminal, color: "#a3e635" },
 
   "Object-Oriented Programming": { Icon: Boxes, color: "#f472b6" },
   "Database Design": { Icon: Database, color: "#00758F" },

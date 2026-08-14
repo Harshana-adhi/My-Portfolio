@@ -27,12 +27,6 @@ export function Skills() {
                     className="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-primary/10 blur-2xl transition-opacity duration-300 group-hover/card:opacity-100 opacity-0"
                     aria-hidden
                   />
-                  <span
-                    className="pointer-events-none absolute right-3 top-1 select-none font-display text-5xl font-semibold text-foreground/[0.06] sm:text-6xl"
-                    aria-hidden
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
 
                   <div className="flex items-center gap-2.5">
                     <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-primary/15 text-primary">
@@ -44,19 +38,19 @@ export function Skills() {
                     </h3>
                   </div>
 
-                  <div className="mt-5 grid grid-cols-2 gap-2">
+                  <div className="mt-5 flex flex-wrap gap-2">
                     {group.skills.map((skill) => {
                       const { Icon, color } = getSkillIcon(skill);
                       return (
                         <div
                           key={skill}
-                          className="group/chip flex items-center gap-2 rounded-lg border border-border bg-background/40 px-2.5 py-2 text-xs font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-background/70 sm:text-sm"
+                          className="group/chip flex items-center gap-2 whitespace-nowrap rounded-lg border border-border bg-background/40 px-2.5 py-2 text-xs font-medium transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-background/70 sm:text-sm"
                         >
                           <Icon
                             className="size-4 shrink-0 transition-transform duration-200 group-hover/chip:scale-110"
                             style={{ color }}
                           />
-                          <span className="truncate">{skill}</span>
+                          <span>{skill}</span>
                         </div>
                       );
                     })}

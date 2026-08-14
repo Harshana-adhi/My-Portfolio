@@ -8,9 +8,10 @@ import { Github, ExternalLink, Layers } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { getSkillIcon } from "@/lib/skill-icons";
 import { projects } from "@/data";
 
-const DISMISS_DURATION_MS = 420;
+const DISMISS_DURATION_MS = 550;
 
 export function Projects() {
   const [order, setOrder] = React.useState(projects.map((_, i) => i));
@@ -59,7 +60,7 @@ export function Projects() {
 
       <Reveal delay={0.1}>
         <div className="relative mt-14 overflow-visible px-4 pb-6 sm:px-10">
-          <div className="relative h-[600px] sm:h-[540px]">
+          <div className="relative h-[1050px] sm:h-[900px]">
             {order.map((projectIndex, pos) => {
               const project = projects[projectIndex];
               const isFront = pos === 0;
@@ -113,8 +114,8 @@ export function Projects() {
                   whileTap={!isDismissing ? { scale: (isFront ? 1 : 1 - pos * 0.055) - 0.02 } : undefined}
                   transition={
                     isDismissing
-                      ? { duration: DISMISS_DURATION_MS / 1000, ease: "easeIn" }
-                      : { type: "spring", stiffness: 260, damping: 24 }
+                      ? { duration: DISMISS_DURATION_MS / 1000, ease: [0.32, 0, 0.67, 0] }
+                      : { type: "spring", stiffness: 180, damping: 26, mass: 0.9 }
                   }
                 >
                   <div className="relative aspect-video w-full overflow-hidden">
@@ -153,11 +154,15 @@ export function Projects() {
                         </p>
 
                         <div className="mt-4 flex flex-wrap gap-1.5">
-                          {project.tech.map((t) => (
-                            <Badge key={t} variant="outline">
-                              {t}
-                            </Badge>
-                          ))}
+                          {project.tech.map((t) => {
+                            const { Icon, color } = getSkillIcon(t);
+                            return (
+                              <Badge key={t} variant="outline" className="gap-1.5">
+                                <Icon className="size-3.5 shrink-0" style={{ color }} />
+                                {t}
+                              </Badge>
+                            );
+                          })}
                         </div>
 
                         <p className="mt-4 text-sm text-muted-foreground">
