@@ -136,7 +136,7 @@ export function Projects() {
 
                   <div className="p-6">
                     <span className="font-display text-sm text-primary">
-                      {String(pos + 1).padStart(2, "0")} /{" "}
+                      {String(projectIndex + 1).padStart(2, "0")} /{" "}
                       {String(projects.length).padStart(2, "0")}
                     </span>
                     <h3 className="mt-1 font-display text-2xl font-semibold tracking-tight">
