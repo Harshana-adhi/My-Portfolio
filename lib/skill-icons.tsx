@@ -72,9 +72,9 @@ export const skillIconMap: Record<string, SkillIcon> = {
   "C++": { Icon: SiCplusplus, color: "#00599C" },
 
   "React.js": { Icon: SiReact, color: "#61DAFB" },
-  "Next.js": { Icon: SiNextdotjs, color: "#ffffff" },
+  "Next.js": { Icon: SiNextdotjs, color: "currentColor" },
   "Node.js": { Icon: SiNodedotjs, color: "#339933" },
-  "Express.js": { Icon: SiExpress, color: "#ffffff" },
+  "Express.js": { Icon: SiExpress, color: "currentColor" },
   HTML: { Icon: SiHtml5, color: "#E34F26" },
   CSS: { Icon: SiCss, color: "#1572B6" },
 
@@ -93,14 +93,14 @@ export const skillIconMap: Record<string, SkillIcon> = {
   Supabase: { Icon: SiSupabase, color: "#3FCF8E" },
 
   Git: { Icon: SiGit, color: "#F05032" },
-  GitHub: { Icon: SiGithub, color: "#ffffff" },
+  GitHub: { Icon: SiGithub, color: "currentColor" },
   "VS Code": { Icon: Code2, color: "#007ACC" },
   Postman: { Icon: SiPostman, color: "#FF6C37" },
   "REST APIs": { Icon: Webhook, color: "#10b981" },
 
   TypeScript: { Icon: SiTypescript, color: "#3178C6" },
   "Tailwind CSS": { Icon: SiTailwindcss, color: "#06B6D4" },
-  JWT: { Icon: SiJsonwebtokens, color: "#ffffff" },
+  JWT: { Icon: SiJsonwebtokens, color: "currentColor" },
   WebSockets: { Icon: Radio, color: "#22d3ee" },
   Zod: { Icon: SiZod, color: "#3E67B1" },
   Groq: { Icon: Zap, color: "#f59e0b" },

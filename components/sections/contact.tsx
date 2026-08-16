@@ -129,7 +129,7 @@ export function Contact() {
             </Button>
 
             {status === "success" && (
-              <p role="status" className="text-sm text-secondary-foreground">
+              <p role="status" className="text-sm font-medium text-secondary">
                 Thanks! Your message has been sent — I&apos;ll get back to you soon.
               </p>
             )}
