@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Antonio, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import { SmoothScroll } from "@/components/smooth-scroll";
-import { ScrollSpeed } from "@/components/scroll-speed";
+import { ScrollController } from "@/components/scroll-controller";
 import { Navbar } from "@/components/sections/navbar";
 import { Footer } from "@/components/sections/footer";
 import { profile } from "@/data";
@@ -62,8 +61,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           >
             Skip to content
           </a>
-          <SmoothScroll />
-          <ScrollSpeed />
+          <ScrollController />
           <Navbar />
           <main id="main-content" className="flex-1">
             {children}
