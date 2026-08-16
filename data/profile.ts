@@ -36,6 +36,5 @@ export const profile: Profile = {
     { label: "GitHub", href: "https://github.com/Harshana-adhi", icon: "github" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/harshanapraveen", icon: "linkedin" },
     { label: "harshana23738@gmail.com", href: "mailto:harshana23738@gmail.com", icon: "mail" },
-    { label: "contact@harshanapraveen.best", href: "mailto:contact@harshanapraveen.best", icon: "mail" },
   ],
 };
