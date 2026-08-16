@@ -33,13 +33,18 @@ Drop your resume at `public/resume.pdf` (exact filename). The "Download CV" butt
 
 The contact form posts to `app/api/contact/route.ts`, which sends email via [Resend](https://resend.com). Without an API key the route returns a clear "not configured" error instead of failing silently.
 
-1. Create a free account at [resend.com](https://resend.com) and generate an API key.
-2. Create `.env.local` in the project root:
+Already configured for local development: `.env.local` holds `RESEND_API_KEY`, and the route sends from `contact@harshanapraveen.best` (verified domain) to the address in `data/profile.ts`.
+
+If you ever need to set this up again (e.g. a fresh clone):
+
+1. Create `.env.local` in the project root:
    ```
    RESEND_API_KEY=re_your_key_here
    ```
-3. By default the route sends from `onboarding@resend.dev` (Resend's shared sandbox sender, works without domain verification) to the email in `data/profile.ts`. To send from your own domain, verify it in Resend and update the `from` address in `app/api/contact/route.ts`.
-4. Restart the dev server after adding the env var.
+2. The `from` address in `app/api/contact/route.ts` must be on a domain verified in your [Resend dashboard](https://resend.com/domains).
+3. Restart the dev server after adding the env var.
+
+**For Vercel deployment**, `.env.local` is gitignored and never gets pushed — add `RESEND_API_KEY` under Vercel Project Settings → Environment Variables instead (see below).
 
 ## Deploy to Vercel
 
