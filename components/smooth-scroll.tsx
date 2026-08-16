@@ -2,7 +2,7 @@
 
 import * as React from "react";
 
-const SCROLL_DURATION_MS = 1100;
+const SCROLL_DURATION_MS = 2600;
 const NAV_OFFSET_PX = 72;
 
 function easeInOutQuad(t: number) {

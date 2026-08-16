@@ -39,9 +39,9 @@ export function Projects() {
       return;
     }
     setDismissing(index);
+    sendToBack(index);
     if (dismissTimeout.current) clearTimeout(dismissTimeout.current);
     dismissTimeout.current = setTimeout(() => {
-      sendToBack(index);
       setDismissing(null);
     }, DISMISS_DURATION_MS);
   }
@@ -115,7 +115,7 @@ export function Projects() {
                   transition={
                     isDismissing
                       ? { duration: DISMISS_DURATION_MS / 1000, ease: [0.32, 0, 0.67, 0] }
-                      : { type: "spring", stiffness: 180, damping: 26, mass: 0.9 }
+                      : { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
                   }
                 >
                   <div className="relative aspect-video w-full overflow-hidden">
