@@ -2,7 +2,7 @@ import { Profile } from "./types";
 
 export const profile: Profile = {
   name: "Harshana Praveen",
-  role: "MIT Undergraduate | Software Developer | AI/ML Enthusiast",
+  role: "IT Undergraduate | Software Developer | AI/ML Enthusiast",
   tagline:
     "I am an MIT undergraduate at the University of Kelaniya with a passion for software development, artificial intelligence, machine learning, and emerging technologies. I enjoy transforming ideas into practical technology solutions while continuously developing my technical and problem-solving skills.",
   location: "Sri Lanka",
@@ -35,6 +35,7 @@ export const profile: Profile = {
   socials: [
     { label: "GitHub", href: "https://github.com/Harshana-adhi", icon: "github" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/harshanapraveen", icon: "linkedin" },
-    { label: "Email", href: "mailto:harshana23738@gmail.com", icon: "mail" },
+    { label: "harshana23738@gmail.com", href: "mailto:harshana23738@gmail.com", icon: "mail" },
+    { label: "contact@harshanapraveen.best", href: "mailto:contact@harshanapraveen.best", icon: "mail" },
   ],
 };
