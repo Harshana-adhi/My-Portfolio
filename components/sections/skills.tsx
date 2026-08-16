@@ -6,7 +6,15 @@ import { getCategoryIcon } from "@/lib/skill-category-icons";
 export function Skills() {
   return (
     <section id="skills" className="relative px-4 py-24 sm:px-6 lg:px-8">
-      <div className="pointer-events-none absolute inset-0 -z-10 gradient-mesh opacity-20" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 gradient-mesh opacity-20"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+        }}
+      />
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <h2 className="font-display text-4xl font-semibold tracking-tight lowercase sm:text-5xl">

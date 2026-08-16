@@ -22,7 +22,14 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[92vh] items-center overflow-hidden px-4 pb-20 sm:px-6 lg:px-8"
     >
-      <div className="pointer-events-none absolute inset-0 -z-10 gradient-mesh animate-gradient bg-[length:200%_200%] opacity-70" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 gradient-mesh animate-gradient bg-[length:200%_200%] opacity-70"
+        style={{
+          maskImage: "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black 0%, black 55%, transparent 100%)",
+        }}
+      />
 
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-10 md:grid-cols-2">
         <motion.div

@@ -50,7 +50,15 @@ export function Contact() {
 
   return (
     <section id="contact" className="relative px-4 py-24 sm:px-6 lg:px-8">
-      <div className="pointer-events-none absolute inset-0 -z-10 gradient-mesh opacity-25" />
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 gradient-mesh opacity-25"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+        }}
+      />
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-12 md:grid-cols-2">
         <Reveal>
           <h2 className="font-display text-4xl font-semibold tracking-tight lowercase sm:text-5xl">
