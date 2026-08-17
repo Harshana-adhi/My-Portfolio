@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, Float, MeshDistortMaterial } from "@react-three/drei";
+import { Environment, Float, Lightformer, MeshDistortMaterial } from "@react-three/drei";
 import * as THREE from "three";
 
 function HeroBlob() {
@@ -43,7 +43,11 @@ export default function HeroScene() {
       <directionalLight position={[3, 3, 3]} intensity={1.4} color="#0bde66" />
       <pointLight position={[-3, -2, -2]} intensity={0.8} color="#d0ff71" />
       <HeroBlob />
-      <Environment preset="city" />
+      <Environment resolution={64}>
+        <Lightformer intensity={2.5} color="#d0ff71" position={[0, 3, 0]} scale={[6, 6, 1]} />
+        <Lightformer intensity={1.5} color="#0bde66" position={[-3, 0, 3]} scale={[4, 4, 1]} />
+        <Lightformer intensity={1.5} color="#ffffff" position={[3, -2, -3]} scale={[4, 4, 1]} />
+      </Environment>
     </Canvas>
   );
 }
